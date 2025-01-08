@@ -16,6 +16,8 @@
 
 <svelte:head>
 	<title>{m.title()}</title>
+	<meta property="og:title" content={m.title()} />
+	<meta property="og:description" content={m.tagline()} />
 </svelte:head>
 
 {#snippet url(url: string, classes?: string)}
