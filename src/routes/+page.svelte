@@ -29,7 +29,7 @@
 <div class="absolute right-4 top-4">
 	<button
 		onclick={() => (data.session ? signOut() : signIn('discord'))}
-		class="flex w-max items-center gap-2 rounded-md border-2 bg-white p-2 drop-shadow-md transition-all hover:bg-gray-200 active:drop-shadow-none"
+		class="flex w-max items-center gap-2 rounded-md border-2 bg-white p-2 drop-shadow-md transition-all hover:bg-gray-200 active:drop-shadow-none dark:bg-gray-900 dark:hover:bg-gray-700 dark:active:bg-gray-600"
 	>
 		{#if !data.session}
 			<DiscordLogo />
@@ -45,20 +45,20 @@
 </div>
 
 <div
-	class="prose flex h-full w-full flex-col items-center justify-center px-4 text-center text-4xl sm:text-6xl md:text-8xl"
+	class="prose flex h-full w-full flex-col items-center justify-center px-4 text-center text-4xl dark:prose-invert sm:text-6xl md:text-8xl"
 >
 	<div>
 		<span class="font-extrabold">commission</span><span>.now</span>
 	</div>
 
 	{#if notfound}
-		<div class="text-xl text-red-800">
+		<div class="text-xl text-red-800 dark:text-red-300">
 			{m.info_start()}
 			{@render url(notfound)}
 			{m.info_end_notfound()}
 		</div>
 	{:else if disabled}
-		<div class="text-xl text-red-800">
+		<div class="text-xl text-red-800 dark:text-red-300">
 			{m.info_start()}
 			{@render url(disabled)}
 
@@ -69,29 +69,29 @@
 			{@render url(data.link?._id ?? user.username, classes)}
 		{/snippet}
 		{#if form?.created}
-			<div class="text-lg text-green-800">
+			<div class="text-lg text-green-800 dark:text-green-300">
 				{m.enabled()}
 				{@render userurl()}.
 			</div>
 		{:else if form?.disabled}
-			<div class="text-lg text-yellow-800">
+			<div class="text-lg text-yellow-800 dark:text-yellow-300">
 				{m.disabled()}
 				{@render userurl()}.
 			</div>
 		{:else if form?.released}
-			<div class="text-lg text-red-800">
+			<div class="text-lg text-red-800 dark:text-red-300">
 				{m.released()}
 				{@render userurl()}.
 			</div>
 		{:else if form?.updated}
-			<div class="text-lg text-green-800">
+			<div class="text-lg text-green-800 dark:text-green-300">
 				{m.updated()}
 				{@render userurl()}.
 			</div>
 		{:else}
 			<div class="text-lg">
 				{m.editing()}
-				{@render userurl('text-blue-700')}
+				{@render userurl('text-blue-700 dark:text-blue-300')}
 			</div>
 		{/if}
 	{:else}
@@ -114,26 +114,27 @@
 				<input
 					name="destination"
 					type="text"
-					class="rounded-md"
+					class="rounded-md dark:bg-gray-800"
 					placeholder={m.linkto()}
 					bind:value={destination}
 				/>
 				<button
 					disabled={!data.link?.enabled && !destination}
-					class="m-2 rounded-md border-2 bg-white p-2 drop-shadow-md transition-all hover:bg-gray-200 active:drop-shadow-none disabled:!text-gray-400 disabled:drop-shadow-none disabled:hover:bg-white"
+					class="m-2 rounded-md border-2 bg-white p-2 drop-shadow-md transition-all hover:bg-gray-200 active:drop-shadow-none disabled:!text-gray-400 disabled:drop-shadow-none disabled:hover:bg-white dark:border-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 dark:active:bg-gray-600 disabled:dark:!text-gray-600 dark:disabled:hover:bg-gray-800"
 					class:text-yellow-800={data.link?.enabled}
+					class:dark:text-yellow-300={data.link?.enabled}
 				>
 					<span>{data.link?.enabled ? m.disable_action() : m.enable_action()}</span>
-					{@render userurl('font-mono text-blue-800 hover:underline disabled:bg-gray-200')}
+					{@render userurl('font-mono text-blue-800 dark:text-blue-300 hover:underline disabled:bg-gray-200')}
 				</button>
 			</form>
 			{#if data.link}
 				<form method="POST" action="?/release" class="flex flex-col items-center">
 					<button
-						class="m-2 rounded-md border-2 bg-white p-2 text-red-800 drop-shadow-md transition-all hover:bg-gray-200 active:drop-shadow-none"
+						class="m-2 rounded-md border-2 bg-white p-2 drop-shadow-md transition-all hover:bg-gray-200 active:drop-shadow-none disabled:!text-gray-400 disabled:drop-shadow-none disabled:hover:bg-white dark:border-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 dark:active:bg-gray-600 disabled:dark:!text-gray-600 dark:disabled:hover:bg-gray-800 text-red-800 dark:text-red-300"
 					>
 						<span>{m.release_action()}</span>
-						{@render userurl('font-mono text-blue-800 hover:underline')}
+						{@render userurl('font-mono text-blue-800 dark:text-blue-300 hover:underline')}
 					</button>
 					<div class="text-xs">
 						{m.release_help()}
