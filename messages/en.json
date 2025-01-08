@@ -1,0 +1,21 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+	"title": "commission.now - comm shortlinks",
+	"tagline": "Shortlinks for artisans accepting commissions.",
+	"signin": "Sign In with {service}",
+	"signout": "Sign Out",
+	"welcome": "Welcome, {name}",
+	"info_start": "A shortlink for",
+	"info_end_notfound": "was not found",
+	"info_end_disabled": "is disabled by its author",
+	"enabled": "Successfully enabled",
+	"disabled": "Successfully disabled",
+	"released": "Successfully released",
+	"updated": "Successfully updated",
+	"editing": "Editing",
+	"linkto": "Link to...",
+	"enable_action": "Click to enable your domain",
+	"disable_action": "Click to disable your domain",
+	"release_action": "Click to release your domain",
+	"release_help": "You can release your domain if you change your username to choose a new URL."
+}
