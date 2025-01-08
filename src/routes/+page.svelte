@@ -18,6 +18,7 @@
 	<title>{m.title()}</title>
 	<meta property="og:title" content={m.title()} />
 	<meta property="og:description" content={m.tagline()} />
+	<meta property="og:url" content="https://commission.now/" />
 </svelte:head>
 
 {#snippet url(url: string, classes?: string)}
