@@ -1,7 +1,7 @@
-import { MONGO_PASS, MONGO_URI, MONGO_USER } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 import { MongoClient } from 'mongodb';
 
-const uri = MONGO_URI.replace('%u', MONGO_USER).replace('%p', MONGO_PASS);
+const uri = (env.MONGO_URI ?? "mongodb://example").replace('%u', env.MONGO_USER ?? "unknown").replace('%p', env.MONGO_PASS ?? "unknown");
 
 export const mongo = new MongoClient(uri);
 const dbraw = mongo.db('commission_now');
