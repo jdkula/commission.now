@@ -1,7 +1,18 @@
 import type { Handle } from '@sveltejs/kit';
-import { i18n } from '$lib/i18n';
-import { sequence } from '@sveltejs/kit/hooks';
-import { handle as handleAuth } from './auth';
-const handleParaglide: Handle = i18n.handle();
+import { paraglideMiddleware } from '$lib/paraglide/server';
+import { getTextDirection } from '$lib/paraglide/runtime';
 
-export const handle: Handle = sequence(handleParaglide, handleAuth);
+// creating a handle to use the paraglide middleware
+const paraglideHandle: Handle = ({ event, resolve }) =>
+	paraglideMiddleware(event.request, ({ request: localizedRequest, locale }) => {
+		event.request = localizedRequest;
+		return resolve(event, {
+			transformPageChunk: ({ html }) => {
+				return html
+					.replace('%lang%', locale)
+					.replace('%dir%', getTextDirection(locale));
+			}
+		});
+	});
+
+export const handle: Handle = paraglideHandle;

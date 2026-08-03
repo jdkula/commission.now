@@ -17,6 +17,5 @@
 	"linkto": "Link to...",
 	"enable_action": "Click to enable your domain",
 	"disable_action": "Click to disable your domain",
-	"release_action": "Click to release your domain",
-	"release_help": "You can release your domain if you change your username to choose a new URL."
+	"release_action": "Click to release your domain"
 }
